@@ -1,5 +1,5 @@
 
-name: Deploy Misi Detektif Digital
+name: Deploy Game Misi Detektif Digital
 
 on:
   push:
@@ -21,28 +21,27 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Ambil kode project
+      - name: Mengambil kode project
         uses: actions/checkout@v4
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: npm
 
-      - name: Install dependencies
-        run: npm ci
+      - name: Install Dependencies
+        run: npm install
 
-      - name: Build game
+      - name: Build Game
         run: npm run build
 
       - name: Setup GitHub Pages
         uses: actions/configure-pages@v5
 
-      - name: Upload hasil build
+      - name: Upload Hasil Build
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./dist
 
-      - name: Publish game
+      - name: Deploy Game ke GitHub Pages
         uses: actions/deploy-pages@v4
