@@ -1,0 +1,6 @@
+{
+  "name": "Misi Detektif Digital",
+  "description": "Game edukasi interaktif animasi petualangan menjelajahi aplikasi perkantoran untuk siswa SMP Kelas VIII.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
