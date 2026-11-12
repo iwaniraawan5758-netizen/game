@@ -21,7 +21,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Mengambil kode project
+      - name: Checkout Repository
         uses: actions/checkout@v4
 
       - name: Setup Node.js
@@ -30,7 +30,7 @@ jobs:
           node-version: 22
 
       - name: Install Dependencies
-        run: npm install
+        run: npm install --legacy-peer-deps
 
       - name: Build Game
         run: npm run build
@@ -38,10 +38,10 @@ jobs:
       - name: Setup GitHub Pages
         uses: actions/configure-pages@v5
 
-      - name: Upload Hasil Build
+      - name: Upload Build
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./dist
 
-      - name: Deploy Game ke GitHub Pages
+      - name: Deploy Game
         uses: actions/deploy-pages@v4
