@@ -51,6 +51,38 @@ export default function App() {
 
   // Initial load from localStorage
   useEffect(() => {
+    // Memulai musik setelah interaksi pertama pemain
+useEffect(() => {
+  const startMusicAfterInteraction = () => {
+    if (audio.musicEnabled) {
+      audio.startMusic();
+    }
+  };
+
+  window.addEventListener(
+    'pointerdown',
+    startMusicAfterInteraction,
+    { once: true }
+  );
+
+  window.addEventListener(
+    'keydown',
+    startMusicAfterInteraction,
+    { once: true }
+  );
+
+  return () => {
+    window.removeEventListener(
+      'pointerdown',
+      startMusicAfterInteraction
+    );
+
+    window.removeEventListener(
+      'keydown',
+      startMusicAfterInteraction
+    );
+  };
+}, []);
     const savedPlayer = loadCurrentPlayer();
     if (savedPlayer) setPlayer(savedPlayer);
 
